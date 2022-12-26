@@ -39,10 +39,7 @@ read_buffer() {
 }
 
 write_buffer() {
-    true >"$file" # Set the file to an empty text file
-    for ln in "${buffer[@]}"; do # Write in the buffer to the file
-        echo "$ln" >>"$file"
-    done
+    printf '%s\n' "${buffer[@]}" >"$file"
     modified=false
     message="Wrote ${#buffer[@]} lines to '$file'"
 }
